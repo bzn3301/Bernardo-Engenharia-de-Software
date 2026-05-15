@@ -11,3 +11,4 @@ int fatorial(int n);
 int fibonacci(int n); // Nova assinatura
 
 #endif
+
