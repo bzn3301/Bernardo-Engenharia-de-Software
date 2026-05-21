@@ -4,21 +4,28 @@
 #include <string>
 
 class System {
-public:
-    System(std::string name = "", double value = 0.0);
-    System(const System& other);
-    System& operator=(const System& other);
-    virtual ~System();
-
-    const std::string& getName() const;
-    void setName(const std::string& name);
-
-    double getValue() const;
-    void setValue(double value);
-
 private:
+    //Atributos
     std::string name;
     double value;
+
+public:
+    //Construtor vazio
+    System();      
+    //Construtor normal                                 
+    System(const std::string& name, double value); 
+    //Destrutor
+    virtual ~System();      
+    //Construtor de copiar                        
+    System(const System& other);  
+    //Sobrecarga                  
+    System& operator=(const System& other);         
+
+    //Get e set dos atributos
+    std::string getName() const;
+    double getValue() const;
+    void setValue(double value);
+    void setName(std::string name);
 };
 
 #endif

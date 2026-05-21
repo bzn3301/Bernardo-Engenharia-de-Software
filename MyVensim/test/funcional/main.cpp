@@ -6,12 +6,11 @@
 #include "../../src/system.h"
 #include "../../src/flow.h"
 
-int main()
-{
+int main() {
+    //Roda os testes funcionais
     exponentialFuncionalTest();
     logisticalFuncionalTest();
     complexFuncionalTest();
-
     return 0;
 }
 

@@ -1,122 +1,140 @@
-#include <algorithm>
-#include <cassert>
+#include <iostream>
 #include <cmath>
-
+#include <iomanip>
+#include <cassert>
 #include "funcional_tests.h"
 #include "../../src/model.h"
+#include "../../src/system.h"
 
-class ExponentialFlow : public Flow {
-public:
-    ExponentialFlow(const std::string& name, System* source, System* target)
-        : Flow(name, source, target)
-    {
-    }
+//Metodo do teste funcional do exponencial
+void exponentialFuncionalTest() {
+    std::cout << "Executando Teste Exponencial..." << std::endl;
 
-    double execute() const override
-    {
-        return 0.3 * getTarget()->getValue();
-    }
+    //Crio o modelo
+    Model* mod = new Model("Modelo Exponencial");
+    //Crio os sistemas
+    System* pop1 = new System("pop1", 100.0);
+    System* pop2 = new System("pop2", 0.0);
+    //Crio o fluxo
+    ExponencialFlow* exp = new ExponencialFlow("Fluxo Exponencial");
 
-    Flow* clone() const override
-    {
-        return new ExponentialFlow(*this);
-    }
-};
+    //Defino o destino e origem
+    exp->setSource(pop1); //origem 
+    exp->setTarget(pop2); //destino
 
-class LogisticFlow : public Flow {
-public:
-    LogisticFlow(const std::string& name, System* source, System* target, System* limit)
-        : Flow(name, source, target), limit(limit)
-    {
-    }
+    //Adiciono os sistemas e fluxo no modelo
+    mod->add(pop1);
+    mod->add(pop2);
+    mod->add(exp);
 
-    double execute() const override
-    {
-        const double population = getTarget()->getValue();
-        return 0.3 * population * (1.0 - population / limit->getValue());
-    }
+    //Executo a simulação
+    mod->run(0, 100);
 
-    Flow* clone() const override
-    {
-        return new LogisticFlow(*this);
-    }
+    //Validação com assert
+    //Faço com que a diferença seja menor que 0.0001 para dar certo
+    assert(std::fabs(pop1->getValue() - 36.6032) < 0.0001); 
+    assert(std::fabs(pop2->getValue() - 63.3968) < 0.0001); 
 
-private:
-    System* limit;
-};
+    std::cout << "Teste Exponencial Passou!" << std::endl;
 
-class ComplexFlow : public Flow {
-public:
-    ComplexFlow(const std::string& name, System* source, System* target)
-        : Flow(name, source, target)
-    {
-    }
-
-    double execute() const override
-    {
-        return 0.01 * getSource()->getValue();
-    }
-
-    Flow* clone() const override
-    {
-        return new ComplexFlow(*this);
-    }
-};
-
-static bool closeTo(double actual, double expected, double tolerance)
-{
-    return std::fabs(actual - expected) <= tolerance;
+    //Limpo os ponteiros
+    delete mod;
+    delete pop1;
+    delete pop2;
+    delete exp;
 }
 
-static bool relativelyCloseTo(double actual, double expected, double tolerance)
-{
-    return std::fabs(actual - expected) <= tolerance * std::max(1.0, std::fabs(expected));
+//Metodo do teste funcional do logistico
+void logisticalFuncionalTest() {
+    std::cout << "Executando Teste Logistico..." << std::endl;
+
+    //Crio o modelo e os sistemas
+    Model* mod = new Model("Modelo Logistico");
+    System* p1 = new System("p1", 100.0);
+    System* p2 = new System("p2", 10.0);
+    //Crio o fluxo
+    LogisticaFlow* log = new LogisticaFlow("Fluxo Logistico");
+
+    //Defino o destino e origem
+    log->setSource(p1); //origem
+    log->setTarget(p2); //destino
+
+    //Adiciono sistemas e fluxo no modelo
+    mod->add(p1);
+    mod->add(p2);
+    mod->add(log);
+
+    //Executo a simulacao
+    mod->run(0, 100);
+
+    //Validação com assert
+    //Faço com que a diferença seja menor que 0.0001 para dar certo
+    assert(std::fabs(p1->getValue() - 88.2167) < 0.0001);
+    assert(std::fabs(p2->getValue() - 21.7833) < 0.0001);
+
+    std::cout << "Teste Logistico Passou!" << std::endl;
+
+    //Deleto os ponteiros
+    delete mod;
+    delete p1;
+    delete p2;
+    delete log;
 }
 
-void exponentialFuncionalTest()
-{
-    Model model("Crescimento exponencial");
-    System& population = model.createSystem("P", 10.0);
+void complexFuncionalTest() {
+    std::cout << "Executando Teste Complexo (Sistema Q)..." << std::endl;
 
-    model.createFlow<ExponentialFlow>("nascimento", nullptr, &population);
-    model.run(0, 100);
+    //Criação dos 5 sistemas soltos na memória
+    System* q1 = new System("Q1", 100.0);
+    System* q2 = new System("Q2", 0.0);
+    System* q3 = new System("Q3", 100.0);
+    System* q4 = new System("Q4", 0.0);
+    System* q5 = new System("Q5", 0.0);
 
-    assert(relativelyCloseTo(population.getValue(), 2479335110965.981, 1e-12));
-}
+    //Criação e vinculação das 6 engrenagens de fluxos complexos
+    FlowComplex* f = new FlowComplex("f"); f->setSource(q1); f->setTarget(q2);
+    FlowComplex* g = new FlowComplex("g"); g->setSource(q1); g->setTarget(q3);
+    FlowComplex* r = new FlowComplex("r"); r->setSource(q2); r->setTarget(q5);
+    FlowComplex* t = new FlowComplex("t"); t->setSource(q2); t->setTarget(q3);
+    FlowComplex* u = new FlowComplex("u"); u->setSource(q3); u->setTarget(q4);
+    FlowComplex* v = new FlowComplex("v"); v->setSource(q4); v->setTarget(q1);
 
-void logisticalFuncionalTest()
-{
-    Model model("Crescimento logistico");
-    System& population = model.createSystem("P", 10.0);
-    System& maximumPopulation = model.createSystem("Pmax", 70.0);
+    //Adicionando todos ao modelo por Agregação
+    Model* m = new Model("Complex Model Q");
+    m->add(q1); m->add(q2); m->add(q3); m->add(q4); m->add(q5);
+    m->add(f); m->add(g); m->add(r); m->add(t); m->add(u); m->add(v);
 
-    model.createFlow<LogisticFlow>("nascimento", nullptr, &population, &maximumPopulation);
-    model.run(0, 100);
+    //Executando a simulação por 100 iterações
+    m->run(0, 100);
 
-    assert(closeTo(population.getValue(), 70.0, 1e-6));
-}
+    // teste (imprime qual a precisao do 77.1143 em 10 casas)
+    // std::cout << std::fixed << std::setprecision(10)
+    //     << q3->getValue() << " diff "
+    //     << std::fabs(q3->getValue() - 77.1143) << std::endl;
 
-void complexFuncionalTest()
-{
-    Model model("Modelo complexo");
-    System& q1 = model.createSystem("Q1", 100.0);
-    System& q2 = model.createSystem("Q2", 0.0);
-    System& q3 = model.createSystem("Q3", 100.0);
-    System& q4 = model.createSystem("Q4", 0.0);
-    System& q5 = model.createSystem("Q5", 0.0);
+          
+    //Validação de alta precisao (tive que colocar a funcao round4 para que o codigo pare de falhar quando muda a ultima casa decimal) 
+    auto round4 = [](double v) {
+        return std::round(v * 10000.0) / 10000.0;
+    };
 
-    model.createFlow<ComplexFlow>("f", &q1, &q2);
-    model.createFlow<ComplexFlow>("g", &q1, &q3);
-    model.createFlow<ComplexFlow>("r", &q2, &q5);
-    model.createFlow<ComplexFlow>("t", &q2, &q3);
-    model.createFlow<ComplexFlow>("u", &q3, &q4);
-    model.createFlow<ComplexFlow>("v", &q4, &q1);
+    //verificacao do novo valor
+    // std::cout << std::fixed << std::setprecision(10)
+    //     << round4(q3->getValue());
 
-    model.run(0, 100);
+    assert(round4(q1->getValue()) == 31.8513);
+    assert(round4(q2->getValue()) == 18.4003);
+    assert(round4(q3->getValue()) == 77.1143);
+    assert(round4(q4->getValue()) == 56.1728);
+    assert(round4(q5->getValue()) == 16.4612);
 
-    assert(closeTo(q1.getValue(), 31.8513, 1e-4));
-    assert(closeTo(q2.getValue(), 18.4003, 1e-4));
-    assert(closeTo(q3.getValue(), 77.1143, 1e-4));
-    assert(closeTo(q4.getValue(), 56.1728, 1e-4));
-    assert(closeTo(q5.getValue(), 16.4612, 1e-4));
+
+
+    
+    std::cout << "Teste Complexo Passou!" << std::endl;
+
+    //Limpeza manual da memóriaHeap para evitar vazamentos (Memory Leak)
+    delete m;
+    delete q1; delete q2; delete q3; delete q4; delete q5;
+    delete f; delete g; delete r; delete t; delete u; delete v;
 }

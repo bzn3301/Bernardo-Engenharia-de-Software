@@ -1,34 +1,71 @@
-CXX := g++
-CXXFLAGS := -std=c++17 -Wall -Wextra -pedantic
+# Variáveis de compilação
+CC = g++
+CFLAGS = -Wall -std=c++17
 
-SRC := src/system.cpp src/flow.cpp src/model.cpp
-PRODUCT_BIN := bin/mySim
-UNIT_TEST_BIN := bin/unit_tests
-FUNCIONAL_TEST_BIN := bin/funcional_tests
+# Diretórios
+SRC_DIR = src
+TEST_DIR = test/funcional
+BIN_DIR = bin
 
-.PHONY: all test unit funcional clean
+# Arquivos fonte e objetos do produto principal
+SRC_SOURCES = $(SRC_DIR)/system.cpp $(SRC_DIR)/flow.cpp $(SRC_DIR)/model.cpp
+SRC_OBJECTS = $(BIN_DIR)/system.o $(BIN_DIR)/flow.o $(BIN_DIR)/model.o
 
-all: $(PRODUCT_BIN) $(UNIT_TEST_BIN) $(FUNCIONAL_TEST_BIN)
+# Alvo principal (Compila e roda os testes funcionais)
+all: funcional
 
-$(PRODUCT_BIN): $(SRC) src/main.cpp
-	mkdir -p bin
-	$(CXX) $(CXXFLAGS) $(SRC) src/main.cpp -o $(PRODUCT_BIN)
+# Cria os arquivos .o na pasta bin antes de gerar o executável
+$(BIN_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(BIN_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(UNIT_TEST_BIN): $(SRC) test/unit/main.cpp test/unit/unit_tests.cpp
-	mkdir -p bin
-	$(CXX) $(CXXFLAGS) $(SRC) test/unit/main.cpp test/unit/unit_tests.cpp -o $(UNIT_TEST_BIN)
+# Regra para compilar o executável de testes funcionais
+funcional: $(SRC_OBJECTS)
+	$(CC) $(# Variáveis de compilação
+CC = g++
+CFLAGS = -Wall -std=c++17
 
-$(FUNCIONAL_TEST_BIN): $(SRC) test/funcional/main.cpp test/funcional/funcional_tests.cpp
-	mkdir -p bin
-	$(CXX) $(CXXFLAGS) $(SRC) test/funcional/main.cpp test/funcional/funcional_tests.cpp -o $(FUNCIONAL_TEST_BIN)
+# Diretórios
+SRC_DIR = src
+FUNC_TEST_DIR = test/funcional
+UNIT_TEST_DIR = test/unit
+BIN_DIR = bin
 
-test: unit funcional
+# Arquivos fonte e objetos do produto principal
+SRC_SOURCES = $(SRC_DIR)/system.cpp $(SRC_DIR)/flow.cpp $(SRC_DIR)/model.cpp
+SRC_OBJECTS = $(BIN_DIR)/system.o $(BIN_DIR)/flow.o $(BIN_DIR)/model.o
 
-unit: $(UNIT_TEST_BIN)
-	./$(UNIT_TEST_BIN)
+# Alvo principal (Por padrão, se digitar apenas 'make', compila e roda TUDO)
+all: funcional unitario
 
-funcional: $(FUNCIONAL_TEST_BIN)
-	./$(FUNCIONAL_TEST_BIN)
+# Cria os arquivos .o na pasta bin antes de gerar os executáveis
+$(BIN_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(BIN_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
+funcional: $(SRC_OBJECTS)
+	$(CC) $(CFLAGS) $(FUNC_TEST_DIR)/main.cpp $(FUNC_TEST_DIR)/funcional_tests.cpp $(SRC_OBJECTS) -o $(BIN_DIR)/funcional_tests
+
+run_funcional: funcional
+	./$(BIN_DIR)/funcional_tests
+
+unitario: $(SRC_OBJECTS)
+	$(CC) $(CFLAGS) $(UNIT_TEST_DIR)/main.cpp $(UNIT_TEST_DIR)/unit_tests.cpp $(SRC_OBJECTS) -o $(BIN_DIR)/unit_tests
+
+run_unitario: unitario
+	./$(BIN_DIR)/unit_tests
+
+# Roda as duas suítes de uma vez só
+run_all: run_funcional run_unitario
+
+# Limpa os arquivos gerados pela compilação para deixar o repositório limpo
 clean:
-	rm -f $(PRODUCT_BIN) $(UNIT_TEST_BIN) $(FUNCIONAL_TEST_BIN)
+	rm -rf $(BIN_DIR)/*CFLAGS) $(TEST_DIR)/main.cpp $(TEST_DIR)/funcional_tests.cpp $(SRC_OBJECTS) -o $(BIN_DIR)/funcional_tests
+
+# Regra para rodar os testes
+run_funcional: funcional
+	./$(BIN_DIR)/funcional_tests
+
+# Limpa os arquivos gerados pela compilação para deixar o repositório limpo
+clean:
+	rm -rf $(BIN_DIR)/*

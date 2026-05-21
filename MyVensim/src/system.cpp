@@ -1,47 +1,46 @@
 #include "system.h"
 
-#include <utility>
+//Construtor vazio
+System::System() : name(""), value(0.0) {}
 
-System::System(std::string name, double value)
-    : name(std::move(name)), value(value)
-{
+// Construtor normal
+System::System(const std::string& name, double value) {
+    this->name = name;
+    this->value = value;
 }
 
-System::System(const System& other)
-    : name(other.name), value(other.value)
-{
+// Destrutor
+System::~System() {}
+
+// Construtor de copia
+System::System(const System& other) {
+    this->name = other.name;
+    this->value = other.value;
 }
 
-System& System::operator=(const System& other)
-{
-    if (this != &other) {
-        name = other.name;
-        value = other.value;
+//Sobrecarga do operador
+System& System::operator=(const System& other) {
+    if (this == &other) { 
+        return *this;
     }
-
+    this->name = other.name;
+    this->value = other.value;
     return *this;
 }
 
-System::~System()
-{
-}
-
-const std::string& System::getName() const
-{
+// Get e set dos atributos
+std::string System::getName() const {
     return name;
 }
 
-void System::setName(const std::string& name)
-{
-    this->name = name;
-}
-
-double System::getValue() const
-{
+double System::getValue() const {
     return value;
 }
 
-void System::setValue(double value)
-{
-    this->value = value;
+void System::setValue(double v) {
+    this->value = v;
+}
+
+void System::setName(std::string n) {
+    this->name = n;
 }

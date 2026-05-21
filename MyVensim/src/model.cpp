@@ -1,112 +1,73 @@
 #include "model.h"
 
-#include <unordered_map>
-#include <utility>
+//Construtor vazio
+Model::Model() : name("") {}
 
-static System* copySystemReference(
-    System* system,
-    const std::unordered_map<const System*, System*>& copiedSystems)
-{
-    auto it = copiedSystems.find(system);
+//Construtor com nome
+Model::Model(std::string name) : name(name) {}
 
-    if (it != copiedSystems.end()) {
-        return it->second;
-    }
-
-    return system;
+// Construtor de quando um modelo vai copiar o outro
+Model::Model(const Model& mod) {
+    this->name = mod.name;
+    this->systems = mod.systems;
+    this->flows = mod.flows;
 }
 
-Model::Model(std::string name)
-    : name(std::move(name))
-{
-}
+// Destrutor vazio
+Model::~Model() {}
 
-Model::Model(const Model& other)
-{
-    *this = other;
-}
-
-Model& Model::operator=(const Model& other)
-{
-    if (this == &other) {
+//Sobre carga do operador
+Model& Model::operator=(const Model& mod) {
+    if (this == &mod) {
         return *this;
     }
-
-    name = other.name;
-    systems.clear();
-    flows.clear();
-
-    std::unordered_map<const System*, System*> copiedSystems;
-
-    for (const auto& system : other.systems) {
-        systems.push_back(std::make_unique<System>(*system));
-        copiedSystems[system.get()] = systems.back().get();
-    }
-
-    for (const auto& flow : other.flows) {
-        std::unique_ptr<Flow> copiedFlow(flow->clone());
-
-        copiedFlow->setSource(copySystemReference(flow->getSource(), copiedSystems));
-        copiedFlow->setTarget(copySystemReference(flow->getTarget(), copiedSystems));
-
-        flows.push_back(std::move(copiedFlow));
-    }
-
+    this->name = mod.name;
+    this->systems = mod.systems;
+    this->flows = mod.flows;
     return *this;
 }
 
-Model::~Model()
-{
+// Get e set de nome
+std::string Model::getName() const { 
+    return name; 
 }
 
-const std::string& Model::getName() const
-{
-    return name;
+void Model::setName(std::string n) { 
+    name = n; 
 }
 
-void Model::setName(const std::string& name)
-{
-    this->name = name;
+//Metodo para adicionar sistema ao vetor de sistemas
+void Model::add(System* s) {
+    systems.push_back(s);
 }
 
-System& Model::createSystem(const std::string& name, double value)
-{
-    systems.push_back(std::make_unique<System>(name, value));
-    return *systems.back();
+//Metodo para adicionar fluxos do vetor de fluxos
+void Model::add(Flow* f) {
+    flows.push_back(f);
 }
 
-const std::vector<std::unique_ptr<System>>& Model::getSystems() const
-{
-    return systems;
-}
-
-const std::vector<std::unique_ptr<Flow>>& Model::getFlows() const
-{
-    return flows;
-}
-
-void Model::run(int startTime, int endTime)
-{
-    for (int time = startTime; time < endTime; ++time) {
-        std::vector<double> values;
-        values.reserve(flows.size());
-
-        for (const auto& flow : flows) {
-            values.push_back(flow->execute());
+//Função run assincrona
+void Model::run(int t_initial, int t_end) {
+    //Enquanto o tempo nao acabar
+    for (int tempo = t_initial; tempo < t_end; ++tempo) {
+        //Crio um vetor de resultados
+        std::vector<double> results;
+        
+        //Executo os fluxos e coloco o resultado no vetor de resultados
+        for (size_t i = 0; i < flows.size(); ++i) {
+            results.push_back(flows[i]->execute());
         }
-
-        for (std::size_t i = 0; i < flows.size(); ++i) {
-            Flow* flow = flows[i].get();
-            const double value = values[i];
-
-            if (flow->getSource() != nullptr) {
-                System* source = flow->getSource();
-                source->setValue(source->getValue() - value);
+        
+        //Pego os sistemas de origem e destino dos fluxos
+        for (size_t i = 0; i < flows.size(); ++i) {
+            System* origem = flows[i]->getSource();
+            System* destino = flows[i]->getTarget();
+            //Se não forem nulos, atualizo os valores ao mesmo tempo para não ter inconsistência
+            if (origem != nullptr) {
+                origem->setValue(origem->getValue() - results[i]);
             }
-
-            if (flow->getTarget() != nullptr) {
-                System* target = flow->getTarget();
-                target->setValue(target->getValue() + value);
+            if (destino != nullptr) {
+                destino->setValue(destino->getValue() + results[i]);
             }
         }
     }

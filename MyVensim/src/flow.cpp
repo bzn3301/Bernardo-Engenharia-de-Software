@@ -1,68 +1,56 @@
 #include "flow.h"
 
-#include <utility>
+// Construtor padrão em que inicializa tudo "vazio"
+Flow::Flow() : name(""), source(nullptr), target(nullptr) {}
 
-Flow::Flow(std::string name, System* source, System* target)
-    : name(std::move(name)), source(source), target(target)
-{
+// Construtor apenas com o nome
+Flow::Flow(std::string name) : name(name), source(nullptr), target(nullptr) {}
+
+// Construtor de quando um fluxo vai copiar o outro
+Flow::Flow(const Flow &fl) {
+    this->name = fl.name;
+    this->source = fl.source; 
+    this->target = fl.target;
 }
 
-Flow::Flow(const Flow& other)
-    : name(other.name), source(other.source), target(other.target)
-{
-}
+// Destrutor
+//Como nada é criado nele, fica vazio
+Flow::~Flow() {}
 
-Flow& Flow::operator=(const Flow& other)
-{
-    if (this != &other) {
-        name = other.name;
-        source = other.source;
-        target = other.target;
+// Sobrecarga do operador igual, para permitir recebimento direto
+Flow &Flow::operator=(const Flow &fl) {
+    //Se o objeto for o mesmo que o atual, so retorna ele mesmo
+    if (this == &fl) {
+        return *this;
     }
-
+    //Se for diferente, faço a atribuição
+    this->name = fl.name;
+    this->source = fl.source;
+    this->target = fl.target;
     return *this;
 }
 
-Flow::~Flow()
-{
+//Get e set de origem, destino e nome
+void Flow::setSource(System *s) {
+    source = s;
 }
 
-const std::string& Flow::getName() const
-{
-    return name;
+void Flow::setTarget(System *t) {
+    target = t;
 }
 
-void Flow::setName(const std::string& name)
-{
-    this->name = name;
+void Flow::setName(std::string n) {
+    name = n;
 }
 
-System* Flow::getSource() const
-{
+System *Flow::getSource() const {
     return source;
 }
 
-void Flow::setSource(System* source)
-{
-    this->source = source;
-}
-
-System* Flow::getTarget() const
-{
+System *Flow::getTarget() const {
     return target;
 }
 
-void Flow::setTarget(System* target)
-{
-    this->target = target;
-}
-
-double Flow::execute() const
-{
-    return 0.0;
-}
-
-Flow* Flow::clone() const
-{
-    return new Flow(*this);
+std::string Flow::getName() const {
+    return name;
 }

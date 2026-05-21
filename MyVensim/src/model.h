@@ -1,44 +1,40 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include <memory>
 #include <string>
-#include <utility>
 #include <vector>
-
-#include "flow.h"
 #include "system.h"
+#include "flow.h"
 
 class Model {
-public:
-    explicit Model(std::string name = "");
-    Model(const Model& other);
-    Model& operator=(const Model& other);
-    virtual ~Model();
-
-    const std::string& getName() const;
-    void setName(const std::string& name);
-
-    System& createSystem(const std::string& name, double value);
-
-    template <typename FlowType, typename... Args>
-    FlowType& createFlow(Args&&... args)
-    {
-        auto flow = std::make_unique<FlowType>(std::forward<Args>(args)...);
-        FlowType& reference = *flow;
-        flows.push_back(std::move(flow));
-        return reference;
-    }
-
-    const std::vector<std::unique_ptr<System>>& getSystems() const;
-    const std::vector<std::unique_ptr<Flow>>& getFlows() const;
-
-    void run(int startTime, int endTime);
-
 private:
+    //Atributos
     std::string name;
-    std::vector<std::unique_ptr<System>> systems;
-    std::vector<std::unique_ptr<Flow>> flows;
+    std::vector<System*> systems;
+    std::vector<Flow*> flows;
+
+public:
+    //Construtor vazio
+    Model();                 
+    //Construtor de copia         
+    Model(const Model& mod); 
+    // Construtor com nome
+    Model(std::string name); 
+    //Destrutor       
+    virtual ~Model();       
+    //Sobrecarga           
+    Model& operator=(const Model& mod); 
+
+    // Métodos de adicionar sistemas e flow no modelo
+    void add(System* s);
+    void add(Flow* f);
+
+    //Metodo para simulação
+    void run(int t_initial, int t_end);
+
+    //Get e set de nome
+    std::string getName() const;
+    void setName(std::string name);
 };
 
 #endif

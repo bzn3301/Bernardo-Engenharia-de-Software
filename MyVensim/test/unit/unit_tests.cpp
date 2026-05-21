@@ -1,138 +1,138 @@
-#include <cassert>
-#include <cmath>
-
 #include "unit_tests.h"
 #include "../../src/model.h"
+#include "../../src/system.h"
+#include <cassert>
+#include <iostream>
+#include <cmath>
 
-class TransferFlow : public Flow {
-public:
-    TransferFlow(const std::string& name, System* source, System* target)
-        : Flow(name, source, target)
-    {
-    }
+using namespace std;
 
-    double execute() const override
-    {
-        return 0.1 * getSource()->getValue();
-    }
-
-    Flow* clone() const override
-    {
-        return new TransferFlow(*this);
-    }
-};
-
-static bool closeTo(double actual, double expected, double tolerance)
-{
-    return std::fabs(actual - expected) <= tolerance;
+void testSystemDefaultConstructor(){
+    System s;
+    assert(s.getName() == "");
+    assert(s.getValue() == 0.0);
+    cout << "testSystemDefaultConstructor OK!" << endl;
 }
 
-void testSystem()
-{
-    System system("Populacao", 10.0);
-
-    assert(system.getName() == "Populacao");
-    assert(closeTo(system.getValue(), 10.0, 1e-9));
-
-    system.setName("P");
-    system.setValue(20.0);
-
-    assert(system.getName() == "P");
-    assert(closeTo(system.getValue(), 20.0, 1e-9));
+void testSystemParametrizedConstructor(){
+    System s("Test", 10.0);
+    assert(s.getName() == "Test");
+    assert(s.getValue() == 10.0);
+    cout << "testSystemParametrizedConstructor OK!" << endl;
 }
 
-void testSystemCanonicalForm()
-{
-    System original("Original", 10.0);
-    System copied(original);
-    System assigned;
-
-    assigned = original;
-    original.setName("Alterado");
-    original.setValue(20.0);
-
-    assert(copied.getName() == "Original");
-    assert(closeTo(copied.getValue(), 10.0, 1e-9));
-    assert(assigned.getName() == "Original");
-    assert(closeTo(assigned.getValue(), 10.0, 1e-9));
+void testSystemGetters(){
+    System s("Test", 10.0);
+    assert(s.getName() == "Test");
+    assert(s.getValue() == 10.0);
+    cout << "testSystemGetters OK!" << endl;
 }
 
-void testFlowCanonicalForm()
-{
-    System source("Origem", 100.0);
-    System target("Destino", 0.0);
-    Flow original("Fluxo", &source, &target);
-    Flow copied(original);
-    Flow assigned;
-
-    assigned = original;
-
-    assert(copied.getName() == "Fluxo");
-    assert(copied.getSource() == &source);
-    assert(copied.getTarget() == &target);
-    assert(assigned.getName() == "Fluxo");
-    assert(assigned.getSource() == &source);
-    assert(assigned.getTarget() == &target);
-    assert(closeTo(original.execute(), 0.0, 1e-9));
+void testSystemSetters(){
+    System s;
+    s.setName("NewName");
+    s.setValue(20.5);
+    assert(s.getName() == "NewName");
+    assert(s.getValue() == 20.5);
+    cout << "testSystemSetters OK!" << endl;
 }
 
-void testModelStructure()
-{
-    Model model("Modelo basico");
-    System& source = model.createSystem("Origem", 100.0);
-    System& target = model.createSystem("Destino", 0.0);
+void testFlowGetters(){
+    System s1("S1", 10.0);
+    System s2("S2", 20.0);
+    UnitExponentialFlow f("F");
 
-    model.createFlow<TransferFlow>("transferencia", &source, &target);
+    f.setSource(&s1);
+    f.setTarget(&s2);
 
-    assert(model.getName() == "Modelo basico");
-    assert(model.getSystems().size() == 2);
-    assert(model.getFlows().size() == 1);
+    assert(f.getSource() == &s1);
+    assert(f.getTarget() == &s2);
+    assert(f.getName() == "F");
+    cout << "testFlowGetters OK!" << endl;
 }
 
-void testModelCanonicalForm()
-{
-    Model original("Modelo original");
-    System& source = original.createSystem("Origem", 100.0);
-    System& target = original.createSystem("Destino", 0.0);
+void testFlowSetters(){
+    System s1("S1", 10.0);
+    System s2("S2", 20.0);
+    UnitExponentialFlow f("F");
 
-    original.createFlow<TransferFlow>("transferencia", &source, &target);
+    f.setName("NewName");
+    f.setSource(&s1);
+    f.setTarget(&s2);
 
-    Model copied(original);
-    Model assigned;
-    assigned = original;
-
-    source.setValue(50.0);
-    target.setValue(50.0);
-
-    assert(copied.getName() == "Modelo original");
-    assert(copied.getSystems().size() == 2);
-    assert(copied.getFlows().size() == 1);
-    assert(closeTo(copied.getSystems()[0]->getValue(), 100.0, 1e-9));
-    assert(closeTo(copied.getSystems()[1]->getValue(), 0.0, 1e-9));
-    assert(copied.getFlows()[0]->getSource() == copied.getSystems()[0].get());
-    assert(copied.getFlows()[0]->getTarget() == copied.getSystems()[1].get());
-
-    copied.run(0, 1);
-
-    assert(closeTo(copied.getSystems()[0]->getValue(), 90.0, 1e-9));
-    assert(closeTo(copied.getSystems()[1]->getValue(), 10.0, 1e-9));
-
-    assert(assigned.getName() == "Modelo original");
-    assert(assigned.getSystems().size() == 2);
-    assert(assigned.getFlows().size() == 1);
-    assert(assigned.getFlows()[0]->getSource() == assigned.getSystems()[0].get());
-    assert(assigned.getFlows()[0]->getTarget() == assigned.getSystems()[1].get());
+    assert(f.getSource() == &s1);
+    assert(f.getTarget() == &s2);
+    assert(f.getName() == "NewName");
+    cout << "testFlowSetters OK!" << endl;
 }
 
-void testTransferBetweenSystems()
-{
-    Model model("Transferencia");
-    System& source = model.createSystem("Origem", 100.0);
-    System& target = model.createSystem("Destino", 0.0);
+void testFlowExponentialExecute(){
+    System s("Test", 100.0);
+    UnitExponentialFlow f("exp");
+    f.setSource(&s);
 
-    model.createFlow<TransferFlow>("transferencia", &source, &target);
-    model.run(0, 1);
+    assert(f.execute() == 1.0);
+    cout << "testFlowExponentialExecute OK!" << endl;
+}
 
-    assert(closeTo(source.getValue(), 90.0, 1e-9));
-    assert(closeTo(target.getValue(), 10.0, 1e-9));
+void testFlowLogisticExecute(){
+    System s("Test", 10.0);
+    UnitLogisticFlow f("Log");
+    f.setTarget(&s);
+
+    assert(abs(f.execute() - 0.0857) < 0.0001);
+    cout << "testFlowLogisticExecute OK!" << endl;
+}
+
+void testModelGetters(){
+    Model m("TestModel");
+    assert(m.getName() == "TestModel");
+    cout << "testModelGetters OK!" << endl;
+}
+
+void testModelSetters(){
+    Model m;
+    m.setName("NewModelName");
+    assert(m.getName() == "NewModelName");
+    cout << "testModelSetters OK!" << endl;
+}
+
+void testModelAddSystem(){
+    Model m("TestModel");
+    System *s = new System("S", 10.0);
+    m.add(s);
+    cout << "testModelAddSystem OK!" << endl;
+    delete s;
+}
+
+void testModelAddFlow(){
+    Model m("TestModel");
+    UnitExponentialFlow *f = new UnitExponentialFlow("F");
+    m.add(f);
+    cout << "testModelAddFlow OK!" << endl;
+    delete f;
+}
+
+void testModelRun(){
+    Model m("Simulation");
+    System *q1 = new System("Q1", 100.0);
+    System *q2 = new System("Q2", 0.0);
+    UnitExponentialFlow *f = new UnitExponentialFlow("f");
+
+    f->setSource(q1);
+    f->setTarget(q2);
+
+    m.add(q1);
+    m.add(q2);
+    m.add(f);
+
+    m.run(0, 1);
+
+    assert(q1->getValue() == 99.0);
+    assert(q2->getValue() == 1.0);
+    cout << "testModelRun OK!" << endl;
+
+    delete q1;
+    delete q2;
+    delete f;
 }
