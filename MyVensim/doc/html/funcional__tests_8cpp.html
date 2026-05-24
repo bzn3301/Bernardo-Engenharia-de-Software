@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Documentacao MyVensim: Referência do Arquivo test/funcional/funcional_tests.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Documentacao MyVensim<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto de engenharia (Sprint 3) - Bernardo F. e Maria P.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',false);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li><li class="navelem"><a href="dir_fbd0e864acb36f363f615ea3aef4272b.html">funcional</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle"><div class="title">Referência do Arquivo funcional_tests.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;iomanip&gt;</code><br />
+<code>#include &lt;cassert&gt;</code><br />
+<code>#include &quot;<a class="el" href="funcional__tests_8h_source.html">funcional_tests.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="model_8h_source.html">../../src/model.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="system_8h_source.html">../../src/system.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a2c448ffaffdff4b03c825a01dffa6f27" id="r_a2c448ffaffdff4b03c825a01dffa6f27"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2c448ffaffdff4b03c825a01dffa6f27">exponentialFuncionalTest</a> ()</td></tr>
+<tr class="memitem:a60914db64bde71b56d69320797266c29" id="r_a60914db64bde71b56d69320797266c29"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a60914db64bde71b56d69320797266c29">logisticalFuncionalTest</a> ()</td></tr>
+<tr class="memitem:a943dfe0c597a01c9760c140715fed527" id="r_a943dfe0c597a01c9760c140715fed527"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a943dfe0c597a01c9760c140715fed527">complexFuncionalTest</a> ()</td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Funções</h2>
+<a id="a943dfe0c597a01c9760c140715fed527" name="a943dfe0c597a01c9760c140715fed527"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a943dfe0c597a01c9760c140715fed527">&#9670;&#160;</a></span>complexFuncionalTest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void complexFuncionalTest </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   84</span>                            { <span class="comment">//Funcao para realizar testes complexos</span></div>
+<div class="line"><span class="lineno">   85</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Executando Teste Complexo (Sistema Q)...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   86</span> </div>
+<div class="line"><span class="lineno">   87</span>    <span class="comment">//Criação dos 5 sistemas soltos na memória</span></div>
+<div class="line"><span class="lineno">   88</span>    <a class="code hl_class" href="class_system.html">System</a>* q1 = <span class="keyword">new</span> <a class="code hl_class" href="class_system.html">System</a>(<span class="stringliteral">&quot;Q1&quot;</span>, 100.0);</div>
+<div class="line"><span class="lineno">   89</span>    <a class="code hl_class" href="class_system.html">System</a>* q2 = <span class="keyword">new</span> <a class="code hl_class" href="class_system.html">System</a>(<span class="stringliteral">&quot;Q2&quot;</span>, 0.0);</div>
+<div class="line"><span class="lineno">   90</span>    <a class="code hl_class" href="class_system.html">System</a>* q3 = <span class="keyword">new</span> <a class="code hl_class" href="class_system.html">System</a>(<span class="stringliteral">&quot;Q3&quot;</span>, 100.0);</div>
+<div class="line"><span class="lineno">   91</span>    <a class="code hl_class" href="class_system.html">System</a>* q4 = <span class="keyword">new</span> <a class="code hl_class" href="class_system.html">System</a>(<span class="stringliteral">&quot;Q4&quot;</span>, 0.0);</div>
+<div class="line"><span class="lineno">   92</span>    <a class="code hl_class" href="class_system.html">System</a>* q5 = <span class="keyword">new</span> <a class="code hl_class" href="class_system.html">System</a>(<span class="stringliteral">&quot;Q5&quot;</span>, 0.0);</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>    <span class="comment">//Criação e vinculação das 6 engrenagens de fluxos complexos</span></div>
+<div class="line"><span class="lineno">   95</span>    <a class="code hl_class" href="class_flow_complex.html">FlowComplex</a>* f = <span class="keyword">new</span> <a class="code hl_class" href="class_flow_complex.html">FlowComplex</a>(<span class="stringliteral">&quot;f&quot;</span>); f-&gt;<a class="code hl_function" href="class_flow.html#a4da8089ed4e652c414180252d22c8516">setSource</a>(q1); f-&gt;<a class="code hl_function" href="class_flow.html#a6187a9f827d2c699fa2176b5bf0d05dd">setTarget</a>(q2);</div>
+<div class="line"><span class="lineno">   96</span>    <a class="code hl_class" href="class_flow_complex.html">FlowComplex</a>* g = <span class="keyword">new</span> <a class="code hl_class" href="class_flow_complex.html">FlowComplex</a>(<span class="stringliteral">&quot;g&quot;</span>); g-&gt;<a class="code hl_function" href="class_flow.html#a4da8089ed4e652c414180252d22c8516">setSource</a>(q1); g-&gt;<a class="code hl_function" href="class_flow.html#a6187a9f827d2c699fa2176b5bf0d05dd">setTarget</a>(q3);</div>
+<div class="line"><span class="lineno">   97</span>    <a class="code hl_class" href="class_flow_complex.html">FlowComplex</a>* r = <span class="keyword">new</span> <a class="code hl_class" href="class_flow_complex.html">FlowComplex</a>(<span class="stringliteral">&quot;r&quot;</span>); r-&gt;<a class="code hl_function" href="class_flow.html#a4da8089ed4e652c414180252d22c8516">setSource</a>(q2); r-&gt;<a class="code hl_function" href="class_flow.html#a6187a9f827d2c699fa2176b5bf0d05dd">setTarget</a>(q5);</div>
+<div class="line"><span class="lineno">   98</span>    <a class="code hl_class" href="class_flow_complex.html">FlowComplex</a>* t = <span class="keyword">new</span> <a class="code hl_class" href="class_flow_complex.html">FlowComplex</a>(<span class="stringliteral">&quot;t&quot;</span>); t-&gt;<a class="code hl_function" href="class_flow.html#a4da8089ed4e652c414180252d22c8516">setSource</a>(q2); t-&gt;<a class="code hl_function" href="class_flow.html#a6187a9f827d2c699fa2176b5bf0d05dd">setTarget</a>(q3);</div>
+<div class="line"><span class="lineno">   99</span>    <a class="code hl_class" href="class_flow_complex.html">FlowComplex</a>* u = <span class="keyword">new</span> <a class="code hl_class" href="class_flow_complex.html">FlowComplex</a>(<span class="stringliteral">&quot;u&quot;</span>); u-&gt;<a class="code hl_function" href="class_flow.html#a4da8089ed4e652c414180252d22c8516">setSource</a>(q3); u-&gt;<a class="code hl_function" href="class_flow.html#a6187a9f827d2c699fa2176b5bf0d05dd">setTarget</a>(q4);</div>
+<div class="line"><span class="lineno">  100</span>    <a class="code hl_class" href="class_flow_complex.html">FlowComplex</a>* v = <span class="keyword">new</span> <a class="code hl_class" href="class_flow_complex.html">FlowComplex</a>(<span class="stringliteral">&quot;v&quot;</span>); v-&gt;<a class="code hl_function" href="class_flow.html#a4da8089ed4e652c414180252d22c8516">setSource</a>(q4); v-&gt;<a class="code hl_function" href="class_flow.html#a6187a9f827d2c699fa2176b5bf0d05dd">setTarget</a>(q1);</div>
+<div class="line"><span class="lineno">  101</span> </div>
+<div class="line"><span class="lineno">  102</span>    <span class="comment">//Adicionando todos ao modelo por Agregação</span></div>
+<div class="line"><span class="lineno">  103</span>    <a class="code hl_class" href="class_model.html">Model</a>* m = <span class="keyword">new</span> <a class="code hl_class" href="class_model.html">Model</a>(<span class="stringliteral">&quot;Complex Model Q&quot;</span>);</div>
+<div class="line"><span class="lineno">  104</span>    m-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(q1); m-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(q2); m-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(q3); m-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(q4); m-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(q5);</div>
+<div class="line"><span class="lineno">  105</span>    m-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(f); m-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(g); m-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(r); m-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(t); m-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(u); m-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(v);</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span>    <span class="comment">// m1 = m; (melhorar copia)</span></div>
+<div class="line"><span class="lineno">  108</span> </div>
+<div class="line"><span class="lineno">  109</span>    <span class="comment">//Executando a simulação por 100 iterações</span></div>
+<div class="line"><span class="lineno">  110</span>    m-&gt;<a class="code hl_function" href="class_model.html#aca6100aaf372b1b7ed4f3d77efe22a1d">run</a>(0, 100);</div>
+<div class="line"><span class="lineno">  111</span> </div>
+<div class="line"><span class="lineno">  112</span>    <span class="comment">// teste (imprime qual a precisao do 77.1143 em 10 casas)</span></div>
+<div class="line"><span class="lineno">  113</span>    <span class="comment">// std::cout &lt;&lt; std::fixed &lt;&lt; std::setprecision(10)</span></div>
+<div class="line"><span class="lineno">  114</span>    <span class="comment">//     &lt;&lt; q3-&gt;getValue() &lt;&lt; &quot; diff &quot;</span></div>
+<div class="line"><span class="lineno">  115</span>    <span class="comment">//     &lt;&lt; std::fabs(q3-&gt;getValue() - 77.1143) &lt;&lt; std::endl;</span></div>
+<div class="line"><span class="lineno">  116</span> </div>
+<div class="line"><span class="lineno">  117</span>          </div>
+<div class="line"><span class="lineno">  118</span>    <span class="comment">//Validação de alta precisao (tive que colocar a funcao round4 para que o codigo pare de falhar quando muda a ultima casa decimal) </span></div>
+<div class="line"><span class="lineno">  119</span>    <span class="keyword">auto</span> round4 = [](<span class="keywordtype">double</span> v) {</div>
+<div class="line"><span class="lineno">  120</span>        <span class="keywordflow">return</span> std::round(v * 10000.0) / 10000.0;</div>
+<div class="line"><span class="lineno">  121</span>    };</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>    <span class="comment">//verificacao do novo valor</span></div>
+<div class="line"><span class="lineno">  124</span>    <span class="comment">// std::cout &lt;&lt; std::fixed &lt;&lt; std::setprecision(10)</span></div>
+<div class="line"><span class="lineno">  125</span>    <span class="comment">//     &lt;&lt; round4(q3-&gt;getValue());</span></div>
+<div class="line"><span class="lineno">  126</span> </div>
+<div class="line"><span class="lineno">  127</span>    assert(round4(q1-&gt;<a class="code hl_function" href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">getValue</a>()) == 31.8513);</div>
+<div class="line"><span class="lineno">  128</span>    assert(round4(q2-&gt;<a class="code hl_function" href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">getValue</a>()) == 18.4003);</div>
+<div class="line"><span class="lineno">  129</span>    assert(round4(q3-&gt;<a class="code hl_function" href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">getValue</a>()) == 77.1143);</div>
+<div class="line"><span class="lineno">  130</span>    assert(round4(q4-&gt;<a class="code hl_function" href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">getValue</a>()) == 56.1728);</div>
+<div class="line"><span class="lineno">  131</span>    assert(round4(q5-&gt;<a class="code hl_function" href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">getValue</a>()) == 16.4612);</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span> </div>
+<div class="line"><span class="lineno">  134</span> </div>
+<div class="line"><span class="lineno">  135</span>    </div>
+<div class="line"><span class="lineno">  136</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Teste Complexo Passou!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  137</span> </div>
+<div class="line"><span class="lineno">  138</span>    <span class="comment">//Limpeza manual da memóriaHeap para evitar vazamentos (Memory Leak)</span></div>
+<div class="line"><span class="lineno">  139</span>    <span class="keyword">delete</span> m;</div>
+<div class="line"><span class="lineno">  140</span>    <span class="keyword">delete</span> q1; <span class="keyword">delete</span> q2; <span class="keyword">delete</span> q3; <span class="keyword">delete</span> q4; <span class="keyword">delete</span> q5;</div>
+<div class="line"><span class="lineno">  141</span>    <span class="keyword">delete</span> f; <span class="keyword">delete</span> g; <span class="keyword">delete</span> r; <span class="keyword">delete</span> t; <span class="keyword">delete</span> u; <span class="keyword">delete</span> v;</div>
+<div class="line"><span class="lineno">  142</span>}</div>
+<div class="ttc" id="aclass_flow_complex_html"><div class="ttname"><a href="class_flow_complex.html">FlowComplex</a></div><div class="ttdef"><b>Definição</b> funcional_tests.h:48</div></div>
+<div class="ttc" id="aclass_flow_html_a4da8089ed4e652c414180252d22c8516"><div class="ttname"><a href="class_flow.html#a4da8089ed4e652c414180252d22c8516">Flow::setSource</a></div><div class="ttdeci">void setSource(System *s)</div><div class="ttdef"><b>Definição</b> flow.cpp:34</div></div>
+<div class="ttc" id="aclass_flow_html_a6187a9f827d2c699fa2176b5bf0d05dd"><div class="ttname"><a href="class_flow.html#a6187a9f827d2c699fa2176b5bf0d05dd">Flow::setTarget</a></div><div class="ttdeci">void setTarget(System *t)</div><div class="ttdef"><b>Definição</b> flow.cpp:38</div></div>
+<div class="ttc" id="aclass_model_html"><div class="ttname"><a href="class_model.html">Model</a></div><div class="ttdef"><b>Definição</b> model.h:9</div></div>
+<div class="ttc" id="aclass_model_html_a054350312f72e04ef46fe5b14f987735"><div class="ttname"><a href="class_model.html#a054350312f72e04ef46fe5b14f987735">Model::add</a></div><div class="ttdeci">void add(System *s)</div><div class="ttdef"><b>Definição</b> model.cpp:42</div></div>
+<div class="ttc" id="aclass_model_html_aca6100aaf372b1b7ed4f3d77efe22a1d"><div class="ttname"><a href="class_model.html#aca6100aaf372b1b7ed4f3d77efe22a1d">Model::run</a></div><div class="ttdeci">void run(int t_initial, int t_end)</div><div class="ttdef"><b>Definição</b> model.cpp:52</div></div>
+<div class="ttc" id="aclass_system_html"><div class="ttname"><a href="class_system.html">System</a></div><div class="ttdef"><b>Definição</b> system.h:6</div></div>
+<div class="ttc" id="aclass_system_html_aa7d17369d1034e7d8643a63f69d1901d"><div class="ttname"><a href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">System::getValue</a></div><div class="ttdeci">double getValue() const</div><div class="ttdef"><b>Definição</b> system.cpp:36</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2c448ffaffdff4b03c825a01dffa6f27" name="a2c448ffaffdff4b03c825a01dffa6f27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c448ffaffdff4b03c825a01dffa6f27">&#9670;&#160;</a></span>exponentialFuncionalTest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void exponentialFuncionalTest </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   10</span>                                { <span class="comment">//Funcao para realizar os testes exponenciais</span></div>
+<div class="line"><span class="lineno">   11</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Executando Teste Exponencial...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   12</span> </div>
+<div class="line"><span class="lineno">   13</span>    <span class="comment">//Crio o modelo</span></div>
+<div class="line"><span class="lineno">   14</span>    <a class="code hl_class" href="class_model.html">Model</a>* mod = <span class="keyword">new</span> <a class="code hl_class" href="class_model.html">Model</a>(<span class="stringliteral">&quot;Modelo Exponencial&quot;</span>);</div>
+<div class="line"><span class="lineno">   15</span>    <span class="comment">//Crio os sistemas</span></div>
+<div class="line"><span class="lineno">   16</span>    <a class="code hl_class" href="class_system.html">System</a>* pop1 = <span class="keyword">new</span> <a class="code hl_class" href="class_system.html">System</a>(<span class="stringliteral">&quot;pop1&quot;</span>, 100.0);</div>
+<div class="line"><span class="lineno">   17</span>    <a class="code hl_class" href="class_system.html">System</a>* pop2 = <span class="keyword">new</span> <a class="code hl_class" href="class_system.html">System</a>(<span class="stringliteral">&quot;pop2&quot;</span>, 0.0);</div>
+<div class="line"><span class="lineno">   18</span>    <span class="comment">//Crio o fluxo</span></div>
+<div class="line"><span class="lineno">   19</span>    <a class="code hl_class" href="class_exponencial_flow.html">ExponencialFlow</a>* exp = <span class="keyword">new</span> <a class="code hl_class" href="class_exponencial_flow.html">ExponencialFlow</a>(<span class="stringliteral">&quot;Fluxo Exponencial&quot;</span>);</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span>    <span class="comment">//Defino o destino e origem</span></div>
+<div class="line"><span class="lineno">   22</span>    exp-&gt;<a class="code hl_function" href="class_flow.html#a4da8089ed4e652c414180252d22c8516">setSource</a>(pop1); <span class="comment">//origem </span></div>
+<div class="line"><span class="lineno">   23</span>    exp-&gt;<a class="code hl_function" href="class_flow.html#a6187a9f827d2c699fa2176b5bf0d05dd">setTarget</a>(pop2); <span class="comment">//destino</span></div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>    <span class="comment">//Adiciono os sistemas e fluxo no modelo</span></div>
+<div class="line"><span class="lineno">   26</span>    mod-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(pop1);</div>
+<div class="line"><span class="lineno">   27</span>    mod-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(pop2);</div>
+<div class="line"><span class="lineno">   28</span>    mod-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(exp);</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>    <span class="comment">//Executo a simulação</span></div>
+<div class="line"><span class="lineno">   31</span>    mod-&gt;<a class="code hl_function" href="class_model.html#aca6100aaf372b1b7ed4f3d77efe22a1d">run</a>(0, 100);</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>    <span class="comment">//Validação com assert</span></div>
+<div class="line"><span class="lineno">   34</span>    <span class="comment">//Faço com que a diferença seja menor que 0.0001 para dar certo</span></div>
+<div class="line"><span class="lineno">   35</span>    assert(std::fabs(pop1-&gt;<a class="code hl_function" href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">getValue</a>() - 36.6032) &lt; 0.0001); </div>
+<div class="line"><span class="lineno">   36</span>    assert(std::fabs(pop2-&gt;<a class="code hl_function" href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">getValue</a>() - 63.3968) &lt; 0.0001); </div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Teste Exponencial Passou!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>    <span class="comment">//Limpo os ponteiros</span></div>
+<div class="line"><span class="lineno">   41</span>    <span class="keyword">delete</span> mod;</div>
+<div class="line"><span class="lineno">   42</span>    <span class="keyword">delete</span> pop1;</div>
+<div class="line"><span class="lineno">   43</span>    <span class="keyword">delete</span> pop2;</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keyword">delete</span> exp;</div>
+<div class="line"><span class="lineno">   45</span>}</div>
+<div class="ttc" id="aclass_exponencial_flow_html"><div class="ttname"><a href="class_exponencial_flow.html">ExponencialFlow</a></div><div class="ttdef"><b>Definição</b> funcional_tests.h:13</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a60914db64bde71b56d69320797266c29" name="a60914db64bde71b56d69320797266c29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60914db64bde71b56d69320797266c29">&#9670;&#160;</a></span>logisticalFuncionalTest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void logisticalFuncionalTest </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   48</span>                               { <span class="comment">//Funcao para realizar os testes logisticos</span></div>
+<div class="line"><span class="lineno">   49</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Executando Teste Logistico...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>    <span class="comment">//Crio o modelo e os sistemas</span></div>
+<div class="line"><span class="lineno">   52</span>    <a class="code hl_class" href="class_model.html">Model</a>* mod = <span class="keyword">new</span> <a class="code hl_class" href="class_model.html">Model</a>(<span class="stringliteral">&quot;Modelo Logistico&quot;</span>);</div>
+<div class="line"><span class="lineno">   53</span>    <a class="code hl_class" href="class_system.html">System</a>* p1 = <span class="keyword">new</span> <a class="code hl_class" href="class_system.html">System</a>(<span class="stringliteral">&quot;p1&quot;</span>, 100.0);</div>
+<div class="line"><span class="lineno">   54</span>    <a class="code hl_class" href="class_system.html">System</a>* p2 = <span class="keyword">new</span> <a class="code hl_class" href="class_system.html">System</a>(<span class="stringliteral">&quot;p2&quot;</span>, 10.0);</div>
+<div class="line"><span class="lineno">   55</span>    <span class="comment">//Crio o fluxo</span></div>
+<div class="line"><span class="lineno">   56</span>    <a class="code hl_class" href="class_logistica_flow.html">LogisticaFlow</a>* log = <span class="keyword">new</span> <a class="code hl_class" href="class_logistica_flow.html">LogisticaFlow</a>(<span class="stringliteral">&quot;Fluxo Logistico&quot;</span>);</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>    <span class="comment">//Defino o destino e origem</span></div>
+<div class="line"><span class="lineno">   59</span>    log-&gt;<a class="code hl_function" href="class_flow.html#a4da8089ed4e652c414180252d22c8516">setSource</a>(p1); <span class="comment">//origem</span></div>
+<div class="line"><span class="lineno">   60</span>    log-&gt;<a class="code hl_function" href="class_flow.html#a6187a9f827d2c699fa2176b5bf0d05dd">setTarget</a>(p2); <span class="comment">//destino</span></div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>    <span class="comment">//Adiciono sistemas e fluxo no modelo</span></div>
+<div class="line"><span class="lineno">   63</span>    mod-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(p1);</div>
+<div class="line"><span class="lineno">   64</span>    mod-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(p2);</div>
+<div class="line"><span class="lineno">   65</span>    mod-&gt;<a class="code hl_function" href="class_model.html#a054350312f72e04ef46fe5b14f987735">add</a>(log);</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>    <span class="comment">//Executo a simulacao</span></div>
+<div class="line"><span class="lineno">   68</span>    mod-&gt;<a class="code hl_function" href="class_model.html#aca6100aaf372b1b7ed4f3d77efe22a1d">run</a>(0, 100);</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>    <span class="comment">//Validação com assert</span></div>
+<div class="line"><span class="lineno">   71</span>    <span class="comment">//Faço com que a diferença seja menor que 0.0001 para dar certo</span></div>
+<div class="line"><span class="lineno">   72</span>    assert(std::fabs(p1-&gt;<a class="code hl_function" href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">getValue</a>() - 88.2167) &lt; 0.0001);</div>
+<div class="line"><span class="lineno">   73</span>    assert(std::fabs(p2-&gt;<a class="code hl_function" href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">getValue</a>() - 21.7833) &lt; 0.0001);</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Teste Logistico Passou!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>    <span class="comment">//Deleto os ponteiros</span></div>
+<div class="line"><span class="lineno">   78</span>    <span class="keyword">delete</span> mod;</div>
+<div class="line"><span class="lineno">   79</span>    <span class="keyword">delete</span> p1;</div>
+<div class="line"><span class="lineno">   80</span>    <span class="keyword">delete</span> p2;</div>
+<div class="line"><span class="lineno">   81</span>    <span class="keyword">delete</span> log;</div>
+<div class="line"><span class="lineno">   82</span>}</div>
+<div class="ttc" id="aclass_logistica_flow_html"><div class="ttname"><a href="class_logistica_flow.html">LogisticaFlow</a></div><div class="ttdef"><b>Definição</b> funcional_tests.h:30</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

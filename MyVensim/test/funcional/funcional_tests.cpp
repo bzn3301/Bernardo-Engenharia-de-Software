@@ -128,9 +128,6 @@ void complexFuncionalTest() {
     assert(round4(q4->getValue()) == 56.1728);
     assert(round4(q5->getValue()) == 16.4612);
 
-
-
-    
     std::cout << "Teste Complexo Passou!" << std::endl;
 
     //Limpeza manual da memóriaHeap para evitar vazamentos (Memory Leak)
