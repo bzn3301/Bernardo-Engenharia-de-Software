@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Documentacao MyVensim: Código-Fonte de test/funcional/funcional_tests.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Documentacao MyVensim<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto de engenharia (Sprint 3) - Bernardo F. e Maria P.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',false);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li><li class="navelem"><a href="dir_fbd0e864acb36f363f615ea3aef4272b.html">funcional</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">funcional_tests.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="funcional__tests_8h.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef FUNCIONAL_TESTS_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define FUNCIONAL_TESTS_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="flow_8h.html">../../src/flow.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="system_8h.html">../../src/system.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">//Assinatura das funcoes</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keywordtype">void</span> <a class="code hl_function" href="funcional__tests_8h.html#a2c448ffaffdff4b03c825a01dffa6f27">exponentialFuncionalTest</a>();</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keywordtype">void</span> <a class="code hl_function" href="funcional__tests_8h.html#a60914db64bde71b56d69320797266c29">logisticalFuncionalTest</a>();</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keywordtype">void</span> <a class="code hl_function" href="funcional__tests_8h.html#a943dfe0c597a01c9760c140715fed527">complexFuncionalTest</a>();</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">//Herança, exponencial herdando de flow</span></div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_exponencial_flow.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="class_exponencial_flow.html">ExponencialFlow</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_exponencial_flow.html#ac9975e144e606242748197798e87dd32">Flow</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">//Herdando os construtores de forma canonica do flow</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">using </span><a class="code hl_function" href="class_flow.html#ac9975e144e606242748197798e87dd32">Flow::Flow</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">//Sobreescrita do metodo executa</span></div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_exponencial_flow.html#a50cb70f9966d60b5ec419b501d585319">   19</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_exponencial_flow.html#a50cb70f9966d60b5ec419b501d585319">execute</a>()<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="comment">//Pego a origem se for diferente de nulo</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_flow.html#a1f3858f90d141807377c2640fb5dd0fc">getSource</a>() != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="comment">//Pego o valor atual e multiplico do 0.01</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <span class="keywordflow">return</span> 0.01 * <a class="code hl_function" href="class_flow.html#a1f3858f90d141807377c2640fb5dd0fc">getSource</a>()-&gt;<a class="code hl_function" href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">getValue</a>();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        }</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordflow">return</span> 0.0;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
+</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
+</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">//Herança, logistica herdando de flow</span></div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_logistica_flow.html">   30</a></span><span class="keyword">class </span><a class="code hl_class" href="class_logistica_flow.html">LogisticaFlow</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_logistica_flow.html#ac9975e144e606242748197798e87dd32">Flow</a> {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">//Herdando os construtores de forma canonica do flow</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">using </span><a class="code hl_function" href="class_flow.html#ac9975e144e606242748197798e87dd32">Flow::Flow</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">//Sobreescrita do metodo executa</span></div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="class_logistica_flow.html#a44666e1ed2d524f759971fd333a0c6a5">   36</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_logistica_flow.html#a44666e1ed2d524f759971fd333a0c6a5">execute</a>()<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="comment">//Pego a origem se ela nao for nula</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_flow.html#aff8a0f8ca8dc50d37c92ab7556e172b5">getTarget</a>() != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="comment">//Pego o valor atual</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordtype">double</span> p2 = <a class="code hl_function" href="class_flow.html#aff8a0f8ca8dc50d37c92ab7556e172b5">getTarget</a>()-&gt;<a class="code hl_function" href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">getValue</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="comment">//Faço as contas pedidas pelo cliente</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keywordflow">return</span> 0.01 * p2 * (1.0 - (p2 / 70.0));</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">return</span> 0.0;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
+</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="};">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="class_flow_complex.html">   48</a></span><span class="keyword">class </span><a class="code hl_class" href="class_flow_complex.html">FlowComplex</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_flow_complex.html#ac9975e144e606242748197798e87dd32">Flow</a> {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">//Herdando os construtores de forma canonica do flow</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">using </span><a class="code hl_function" href="class_flow.html#ac9975e144e606242748197798e87dd32">Flow::Flow</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">//Sobrescrita do metodo executa</span></div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="class_flow_complex.html#a577d00cc1564328f25711d3673eee3ea">   54</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_flow_complex.html#a577d00cc1564328f25711d3673eee3ea">execute</a>()<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_flow.html#a1f3858f90d141807377c2640fb5dd0fc">getSource</a>() != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">return</span> 0.01 * <a class="code hl_function" href="class_flow.html#a1f3858f90d141807377c2640fb5dd0fc">getSource</a>()-&gt;<a class="code hl_function" href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">getValue</a>(); <span class="comment">// Equação base do fluxo complexo</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">return</span> 0.0;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
+</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>};</div>
+</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_exponencial_flow_html"><div class="ttname"><a href="class_exponencial_flow.html">ExponencialFlow</a></div><div class="ttdef"><b>Definição</b> funcional_tests.h:13</div></div>
+<div class="ttc" id="aclass_exponencial_flow_html_a50cb70f9966d60b5ec419b501d585319"><div class="ttname"><a href="class_exponencial_flow.html#a50cb70f9966d60b5ec419b501d585319">ExponencialFlow::execute</a></div><div class="ttdeci">double execute() const override</div><div class="ttdef"><b>Definição</b> funcional_tests.h:19</div></div>
+<div class="ttc" id="aclass_exponencial_flow_html_ac9975e144e606242748197798e87dd32"><div class="ttname"><a href="class_exponencial_flow.html#ac9975e144e606242748197798e87dd32">ExponencialFlow::Flow</a></div><div class="ttdeci">Flow()</div><div class="ttdef"><b>Definição</b> flow.cpp:4</div></div>
+<div class="ttc" id="aclass_flow_complex_html"><div class="ttname"><a href="class_flow_complex.html">FlowComplex</a></div><div class="ttdef"><b>Definição</b> funcional_tests.h:48</div></div>
+<div class="ttc" id="aclass_flow_complex_html_a577d00cc1564328f25711d3673eee3ea"><div class="ttname"><a href="class_flow_complex.html#a577d00cc1564328f25711d3673eee3ea">FlowComplex::execute</a></div><div class="ttdeci">double execute() const override</div><div class="ttdef"><b>Definição</b> funcional_tests.h:54</div></div>
+<div class="ttc" id="aclass_flow_complex_html_ac9975e144e606242748197798e87dd32"><div class="ttname"><a href="class_flow_complex.html#ac9975e144e606242748197798e87dd32">FlowComplex::Flow</a></div><div class="ttdeci">Flow()</div><div class="ttdef"><b>Definição</b> flow.cpp:4</div></div>
+<div class="ttc" id="aclass_flow_html_a1f3858f90d141807377c2640fb5dd0fc"><div class="ttname"><a href="class_flow.html#a1f3858f90d141807377c2640fb5dd0fc">Flow::getSource</a></div><div class="ttdeci">System * getSource() const</div><div class="ttdef"><b>Definição</b> flow.cpp:46</div></div>
+<div class="ttc" id="aclass_flow_html_ac9975e144e606242748197798e87dd32"><div class="ttname"><a href="class_flow.html#ac9975e144e606242748197798e87dd32">Flow::Flow</a></div><div class="ttdeci">Flow()</div><div class="ttdef"><b>Definição</b> flow.cpp:4</div></div>
+<div class="ttc" id="aclass_flow_html_aff8a0f8ca8dc50d37c92ab7556e172b5"><div class="ttname"><a href="class_flow.html#aff8a0f8ca8dc50d37c92ab7556e172b5">Flow::getTarget</a></div><div class="ttdeci">System * getTarget() const</div><div class="ttdef"><b>Definição</b> flow.cpp:50</div></div>
+<div class="ttc" id="aclass_logistica_flow_html"><div class="ttname"><a href="class_logistica_flow.html">LogisticaFlow</a></div><div class="ttdef"><b>Definição</b> funcional_tests.h:30</div></div>
+<div class="ttc" id="aclass_logistica_flow_html_a44666e1ed2d524f759971fd333a0c6a5"><div class="ttname"><a href="class_logistica_flow.html#a44666e1ed2d524f759971fd333a0c6a5">LogisticaFlow::execute</a></div><div class="ttdeci">double execute() const override</div><div class="ttdef"><b>Definição</b> funcional_tests.h:36</div></div>
+<div class="ttc" id="aclass_logistica_flow_html_ac9975e144e606242748197798e87dd32"><div class="ttname"><a href="class_logistica_flow.html#ac9975e144e606242748197798e87dd32">LogisticaFlow::Flow</a></div><div class="ttdeci">Flow()</div><div class="ttdef"><b>Definição</b> flow.cpp:4</div></div>
+<div class="ttc" id="aclass_system_html_aa7d17369d1034e7d8643a63f69d1901d"><div class="ttname"><a href="class_system.html#aa7d17369d1034e7d8643a63f69d1901d">System::getValue</a></div><div class="ttdeci">double getValue() const</div><div class="ttdef"><b>Definição</b> system.cpp:36</div></div>
+<div class="ttc" id="aflow_8h_html"><div class="ttname"><a href="flow_8h.html">flow.h</a></div></div>
+<div class="ttc" id="afuncional__tests_8h_html_a2c448ffaffdff4b03c825a01dffa6f27"><div class="ttname"><a href="funcional__tests_8h.html#a2c448ffaffdff4b03c825a01dffa6f27">exponentialFuncionalTest</a></div><div class="ttdeci">void exponentialFuncionalTest()</div><div class="ttdef"><b>Definição</b> funcional_tests.cpp:10</div></div>
+<div class="ttc" id="afuncional__tests_8h_html_a60914db64bde71b56d69320797266c29"><div class="ttname"><a href="funcional__tests_8h.html#a60914db64bde71b56d69320797266c29">logisticalFuncionalTest</a></div><div class="ttdeci">void logisticalFuncionalTest()</div><div class="ttdef"><b>Definição</b> funcional_tests.cpp:48</div></div>
+<div class="ttc" id="afuncional__tests_8h_html_a943dfe0c597a01c9760c140715fed527"><div class="ttname"><a href="funcional__tests_8h.html#a943dfe0c597a01c9760c140715fed527">complexFuncionalTest</a></div><div class="ttdeci">void complexFuncionalTest()</div><div class="ttdef"><b>Definição</b> funcional_tests.cpp:84</div></div>
+<div class="ttc" id="asystem_8h_html"><div class="ttname"><a href="system_8h.html">system.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>
